@@ -6,7 +6,7 @@ public class LeetCode {
     {
         Solution S = new Solution();
         S.twoSum(new int[]{2,7,11,15},9);
-        System.out.println("hello");
+        System.out.println("Hello World");
     }
     public static class Solution{
         public int[] twoSum(int[] nums, int target) {
