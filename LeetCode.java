@@ -114,10 +114,86 @@ public class LeetCode {
         }
         return pre + 1;
     }
+    //2019/07/17
+    public int removeElement(int[] nums, int val) {//27
+        int i = 0;
+        for (int num : nums){
+            if (num != val){  
+                nums[i] = num; 
+                i++;
+            }
+        }
+        return i;
+    }
+    public int strStr(String haystack, String needle) {//28
+        if (needle.isEmpty()) return 0;
+        int begin = 0;
+        while(begin<=haystack.length()-needle.length()){
+            if(needle.equals(haystack.substring(begin, begin+needle.length()))){
+                return begin;
+            }
+            begin ++;
+        }
+        return -1;
+    }
+    public int searchInsert(int[] nums, int target) {//35
+        int index = 0;
+        while(index<nums.length && target>nums[index]){
+            index++;
+        }
+        return index;
+    }
+    public String countAndSay(int n) {//38
+        String s = "1";
+        for(int i = 1; i < n; i++){
+            s = countIdx(s);
+        }
+        return s;
+    }   
+    public String countIdx(String s){
+        StringBuilder sb = new StringBuilder();
+        char c = s.charAt(0);
+        int count = 1;
+        for(int i = 1; i < s.length(); i++){
+            if(s.charAt(i) == c){
+                count++;
+            }
+            else
+            {
+                sb.append(count);
+                sb.append(c);
+                c = s.charAt(i);
+                count = 1;
+            }
+        }
+        sb.append(count);
+        sb.append(c);
+        return sb.toString();
+    }
+    //Medium
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {//2
+        ListNode res = new ListNode(-1);
+        ListNode dump = res;
+        int flag = 0;
+        while(l1!=null || l2!= null){
+            int x = (l1 != null) ? l1.val : 0;
+            int y = (l2 != null) ? l2.val : 0;
+            dump.next = new ListNode((x + y + flag)%10);
+            flag = (x + y + flag )/10;
+            dump = dump.next;
+            if(l1!=null) l1 = l1.next;
+            if(l2!=null) l2 = l2.next;
+        }
+        if(flag>0){
+            dump.next = new ListNode(flag);
+        }
+        return res.next; 
+    }
     public static void main(String[] args)
     {
         LeetCode S = new LeetCode();
-        String x = "III";
+        int[] nums = {2,3,3,2};
+
         int rev = S.romanToInt(x);
         System.out.println(rev);
     }
