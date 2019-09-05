@@ -1,7 +1,6 @@
 import java.util.HashMap;
 import java.util.Stack;
-
-import javax.print.attribute.standard.MediaSize.Other;
+//import javax.print.attribute.standard.MediaSize.Other;
 import Data.ListNode;
 
 public class LeetCode {
@@ -168,7 +167,7 @@ public class LeetCode {
         return sb.toString();
     }
     //2018/09/05
-    public int maxSubArray(int[] nums){
+    public int maxSubArray(int[] nums){//最大子串
         int res = Integer.MIN_VALUE, curnum = 0;
         for(int num:nums){
             curnum = Math.max(curnum+num, num);
@@ -195,6 +194,7 @@ public class LeetCode {
         }
         return res.next; 
     }
+    
     
     public static void main(String[] args)
     {
