@@ -170,6 +170,15 @@ public class LeetCode {
         sb.append(c);
         return sb.toString();
     }
+    //2018/09/05
+    public int maxSubArray(int[] nums){
+        int res = Integer.MIN_VALUE, curnum = 0;
+        for(int num:nums){
+            curnum = Math.max(curnum+num, num);
+            res = Math.max(curnum, res);
+        }
+        return res;
+    }
     //Medium
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {//2
         ListNode res = new ListNode(-1);
@@ -189,11 +198,12 @@ public class LeetCode {
         }
         return res.next; 
     }
+    
     public static void main(String[] args)
     {
         LeetCode S = new LeetCode();
         int[] nums = {2,3,3,2};
-
+        
         int rev = S.romanToInt(x);
         System.out.println(rev);
     }
