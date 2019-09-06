@@ -196,17 +196,35 @@ public class LeetCode {
     }
     public int[] plusOne(int[] digits) {
         int n = digits.length;
-        for (int i = digits.length - 1; i >= 0; --i) {
-            if (digits[i] < 9) {
-                ++digits[i];
+        for(int i=n-1; i>=0; i--){
+            if (digits[i]<9){
+                digits[i]++;
                 return digits;
-            }
+            } 
             digits[i] = 0;
         }
-        int[] res = new int[n + 1];
-        res[0] = 1;
+        int[] res = new int[n+1];
+        res[0]=1;
         return res;
     }
+    //2019/09/06
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i = m-1, j = n-1, k = m+n-1;
+        while(i>=0 && j>=0){
+            if(nums1[i]>nums2[j]){
+                nums1[k] = nums1[i];
+                k--;i--;
+            }else{
+                nums1[k] = nums2[j];
+                k--;j--;
+            }
+        }
+        while(j>=0){
+            nums1[k] = nums2[j];
+            k--;j--;
+        }
+    }
+    
     
     public static void main(String[] args)
     {
