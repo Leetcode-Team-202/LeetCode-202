@@ -1,6 +1,4 @@
-import java.util.HashMap;
-import java.util.Stack;
-//import javax.print.attribute.standard.MediaSize.Other;
+import java.util.*;
 import Data.ListNode;
 
 public class LeetCode {
@@ -224,14 +222,65 @@ public class LeetCode {
             k--;j--;
         }
     }
-    
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> res = new ArrayList<>();
+        ArrayList<Integer> row = new ArrayList<>();
+        for(int i = 0; i<numRows; i++){
+            row.add(0,1);
+            for(int j =1; j<row.size()-1; j++){
+                row.set(j, row.get(j)+row.get(j+1));
+            }
+            res.add(new ArrayList<>(row));
+        }
+        return res;
+    }
+    public List<Integer> getRow(int rowIndex) {
+        List<Integer> row = new ArrayList<>();
+        for(int i =0; i<= rowIndex; i++){
+            row.add(0,1);
+            for(int j =1; j<row.size()-1; j++){
+                row.set(j, row.get(j)+row.get(j+1));
+            }
+        }   
+        return row;
+    }
+    public int maxProfit(int[] prices) {//121
+        int maxprofit = 0, min = Integer.MAX_VALUE;
+        for(int price : prices){
+            int profit = price - min;
+            if(profit > maxprofit){
+                maxprofit = profit;
+            }
+            min = Math.min(min, price);
+        }
+        return maxprofit;   
+    }
+    public int maxProfit2(int[] prices) {//122
+        int profit = 0;
+        for(int i = 1; i<prices.length; i++){
+            if(prices[i] > prices[i-1]){
+                profit += prices[i] - prices[i-1];
+            }
+        }
+        return profit;
+    }
+    public int maxArea(int[] height) {//11
+        int i=0, j=height.length-1, res = 0;
+        while(i<j){
+            res = Math.max(res, Math.min(height[i], height[j]) * (j -i));
+            if(height[i] < height[j]){
+                i++;
+            }else j--;
+        }
+        return res;
+    }
     
     public static void main(String[] args)
     {
         LeetCode S = new LeetCode();
         int[] nums = {2,3,3,2};
         
-        int rev = S.maxSubArray(nums);
+        int rev = S.maxProfit(nums);
         System.out.println(rev);
     }
 
