@@ -275,7 +275,7 @@ public class LeetCode {
         return res;
     }
     //2019/09/08
-    public List<List<Integer>> threeSum(int[] nums) {//15. 13sum
+    public List<List<Integer>> threeSum(int[] nums) {//15. 3sum
         Arrays.sort(nums);
         List<List<Integer>> res = new LinkedList<>();
         for(int i = 0;i<nums.length; i++){
@@ -302,7 +302,7 @@ public class LeetCode {
     public int threeSumClosest(int[] nums, int target) {//16. 3sum Closest
         Arrays.sort(nums);
         int min_diff = Integer.MAX_VALUE, res = 0;
-        for(int i = 0; i< nums.length; i++){
+        for(int i = 0; i< nums.length - 2; i++){
             if(i > 0 && nums[i] == nums[i-1]){
                 continue;
             }
@@ -321,6 +321,38 @@ public class LeetCode {
             }
         }
         return res;
+    }
+    public List<List<Integer>> fourSum(int[] nums, int target) {//18. 4sum
+        Arrays.sort(nums);
+        List<List<Integer>> res = new LinkedList<>();
+        for(int i = 0; i< nums.length-3; i++){
+            if(i > 0 && nums[i] == nums[i-1]){
+                continue;
+            }
+            for(int j = i +1; j < nums.length-2; j++){
+                if(j > i+1 && nums[j] == nums[j-1]){
+                    continue;
+                }
+                for(int l = j + 1, r = nums.length - 1; l < r;){
+                    int sum = nums[i] + nums[j] + nums[l] + nums[r];
+                    if(sum < target){
+                        l++;
+                    }else if(sum > target){
+                        r--;
+                    }else{
+                        res.add(Arrays.asList(nums[i], nums[j], nums[l], nums[r]));
+                        while(l < r && nums[l] == nums[l+1]) l++;
+                        while(l < r && nums[r] == nums[r-1]) r--;
+                        l++;
+                        r--;
+                    }
+                }
+            }
+        }
+        return res;
+    }
+    public void nextPermutation(int[] nums) {//31 Next Permutation
+        
     }
     
     public static void main(String[] args)
