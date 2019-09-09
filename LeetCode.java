@@ -274,6 +274,54 @@ public class LeetCode {
         }
         return res;
     }
+    //2019/09/08
+    public List<List<Integer>> threeSum(int[] nums) {//15. 13sum
+        Arrays.sort(nums);
+        List<List<Integer>> res = new LinkedList<>();
+        for(int i = 0;i<nums.length; i++){
+            if(i > 0 && nums[i] == nums[i-1]){
+                continue;
+            }
+            for(int j = i + 1, k = nums.length - 1; j < k;){
+                int sum = nums[i] + nums[j] + nums[k];
+                if(sum > 0){
+                    k--;
+                }else if(sum < 0){
+                    j++;
+                }else{
+                    res.add(Arrays.asList(nums[i], nums[j], nums[k]));
+                    while(j<k && nums[j] == nums[j+1]) j++;
+                    while(j<k && nums[k] == nums[k-1]) k--;
+                    j++;
+                    k--;
+                }
+            }
+        }
+        return res;
+    }
+    public int threeSumClosest(int[] nums, int target) {//16. 3sum Closest
+        Arrays.sort(nums);
+        int min_diff = Integer.MAX_VALUE, res = 0;
+        for(int i = 0; i< nums.length; i++){
+            if(i > 0 && nums[i] == nums[i-1]){
+                continue;
+            }
+            for(int j = i + 1, k = nums.length - 1; j < k;){
+                int sum = nums[i] + nums[j] + nums[k];
+                if(sum < target){
+                    j++;
+                }else if(sum > target){
+                    k--;
+                }else return sum;
+                int diff = Math.abs(sum - target);
+                if(diff < min_diff){
+                    min_diff = diff;
+                    res = sum;
+                }
+            }
+        }
+        return res;
+    }
     
     public static void main(String[] args)
     {
