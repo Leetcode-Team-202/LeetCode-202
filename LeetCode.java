@@ -352,16 +352,58 @@ public class LeetCode {
         return res;
     }
     public void nextPermutation(int[] nums) {//31 Next Permutation
-        
+        int i = 0, k = 0;
+        for(i = nums.length - 2; i >= 0; i--){
+            if(nums[i+1] > nums[i]){
+                for(k = nums.length -1; k > i; k--){
+                    if(nums[k] > nums[i]) break;
+                }
+                swap(nums, i, k);
+                reverse(nums, i+1, nums.length-1);
+                return;
+            }
+        }
+        reverse(nums, 0, nums.length-1);
     }
-    
+    private void swap(int[] nums, int i, int k){
+        int temp = nums[i];
+        nums[i] = nums[k];
+        nums[k] = temp;
+    }
+    private void reverse(int[] nums, int start, int end){
+        for(;start < end; start++, end--){
+            swap(nums, start, end);
+        }
+    }
+    public int search(int[] nums, int target) {//33 Search in Rotated Sorted Array 
+        int left = 0, right = nums.length - 1;
+        while(left <= right){
+            int mid = (left + right) / 2;
+            if(target == nums[mid]){
+                return mid;
+            }
+            if(nums[mid] >= nums[left]){
+                if(target >= nums[left] && target < nums[mid]){
+                    right = mid - 1;
+                }else{
+                    left = mid + 1;
+                }
+            }else{
+                if(target > nums[mid] && target <= nums[right]){
+                    left = mid +1;
+                }
+                else right = mid -1;
+            }
+        }
+        return -1;
+    }
     public static void main(String[] args)
     {
         LeetCode S = new LeetCode();
         int[] nums = {2,3,3,2};
         
-        int rev = S.maxProfit(nums);
-        System.out.println(rev);
+        S.nextPermutation(nums);
+        System.out.println(nums[3]);
     }
 
 }
