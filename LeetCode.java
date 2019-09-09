@@ -397,6 +397,7 @@ public class LeetCode {
         }
         return -1;
     }
+    
     public static void main(String[] args)
     {
         LeetCode S = new LeetCode();
