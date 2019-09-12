@@ -1,7 +1,6 @@
 import java.util.*;
-import Data.ListNode;
 
-public class LeetCode {
+public class LeetCode_NL {
 
     public int[] twoSum(int[] nums, int target) {
         int[] res = new int[2];
@@ -400,7 +399,7 @@ public class LeetCode {
     
     public static void main(String[] args)
     {
-        LeetCode S = new LeetCode();
+        LeetCode_NL S = new LeetCode_NL();
         int[] nums = {2,3,3,2};
         
         S.nextPermutation(nums);

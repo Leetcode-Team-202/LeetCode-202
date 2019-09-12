@@ -1,4 +1,3 @@
-package Data;
 public class ListNode {
     public int val; 
     public ListNode next;
