@@ -1,5 +1,3 @@
-import heregreat.ListNode;
-
 import java.util.*;
 
 public class LeetCode_NL {
