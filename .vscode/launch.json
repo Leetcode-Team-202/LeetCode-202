@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - LeetCode_NL",
+            "request": "launch",
+            "mainClass": "heregreat.LeetCode_NL",
+            "projectName": "LeetCode-202_303bac71"
+        }
+    ]
+}
