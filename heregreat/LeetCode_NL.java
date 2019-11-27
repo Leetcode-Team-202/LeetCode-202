@@ -399,7 +399,7 @@ public class LeetCode_NL {
         }
         return -1;
     }
-    public int[] searchRange(int[] nums, int target) {
+    public int[] searchRange(int[] nums, int target) {//34
         int[] res = new int[2];
         res[0] = -1;
         res[1] = -1;
@@ -424,9 +424,33 @@ public class LeetCode_NL {
         return res;
         
     }
-    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+    //20191127
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {//39
+        List<List<Integer>> res = new LinkedList<>();
+        helper(candidates, res, new LinkedList<>(), target, 0);
+        return res;
+    }
+    private void helper(int[] candidates, List<List<Integer>> res, List<Integer> list,
+    int target, int index){
+        if(target < 0){
+            return;
+        }else if(target == 0){
+            res.add(new LinkedList<>(list));
+            return;
+        }else if(index >= candidates.length){
+            return;
+        }
+
+        list.add(candidates[index]);
+        helper(candidates, res, list, target-candidates[index], index);
+        list.remove(list.size()-1);
+
+        helper(candidates, res, list, target, index + 1);
+    }
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {//40
         
     }
+    
     
     public static void main(String[] args)
     {
