@@ -1,1 +1,1 @@
-print("Hi, CloudBai, Let's praction leetcode!!!, you can use any program language you like.")
+print("Hi, CloudBai, Let's practice leetcode!!!, you can use any program language you like.")
