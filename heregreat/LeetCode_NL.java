@@ -1,6 +1,3 @@
-package heregreat;
-
-import heregreat.ListNode;
 import java.util.*;
 
 public class LeetCode_NL {
@@ -247,15 +244,16 @@ public class LeetCode_NL {
         return row;
     }
     public int maxProfit(int[] prices) {//121
-        int maxprofit = 0, min = Integer.MAX_VALUE;
+        int max_profit = 0;
+        int min = Integer.MAX_VALUE;
         for(int price : prices){
             int profit = price - min;
-            if(profit > maxprofit){
-                maxprofit = profit;
+            if(profit > max_profit){
+                max_profit = profit;
             }
             min = Math.min(min, price);
         }
-        return maxprofit;   
+        return max_profit;   
     }
     public int maxProfit2(int[] prices) {//122
         int profit = 0;
@@ -446,9 +444,6 @@ public class LeetCode_NL {
         list.remove(list.size()-1);
 
         helper(candidates, res, list, target, index + 1);
-    }
-    public List<List<Integer>> combinationSum2(int[] candidates, int target) {//40
-        
     }
     
     
