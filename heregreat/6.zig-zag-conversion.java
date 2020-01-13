@@ -11,13 +11,12 @@ class Solution {
         if(numRows == 1){
             return s;
         }
+        boolean down = true;
         String[] strs = new String[numRows];
         Arrays.fill(strs, "");
-        boolean down = true;
-        for(int i = 0, k = 0; k < s.length(); k++){
-            strs[i] += s.substring(k, k+1);
-
-            if(down){
+        for(int i = 0, k = 0; k< s.length();k++){
+            strs[i] += s.charAt(k);
+            if(down == true){
                 if(i < numRows - 1){
                     i++;
                 }else{
@@ -25,7 +24,7 @@ class Solution {
                     down = false;
                 }
             }else{
-                if(i > 0){
+                if(i>0){
                     i--;
                 }else{
                     i++;
