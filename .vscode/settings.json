@@ -1,5 +1,7 @@
 {
     "cSpell.words": [
         "heregreat"
-    ]
+    ],
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }
