@@ -5,8 +5,11 @@
 #
 
 # @lc code=start
+
+
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-        
+        end = True
+       while(end):
+           
 # @lc code=end
-
