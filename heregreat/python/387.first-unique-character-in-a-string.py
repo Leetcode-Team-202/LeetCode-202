@@ -7,6 +7,13 @@
 # @lc code=start
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        
-# @lc code=end
+        wro = set()
+        for i in range(0, len(s)):
+            if(s[i] not in s[i+1:] and s[i] not in wro):
+                return i
+            else:
+                wro.add(s[i])
+        return -1
 
+# @lc code=end
+print(Solution().firstUniqChar("cc"))
